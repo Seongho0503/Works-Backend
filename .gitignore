@@ -9,3 +9,5 @@ gen
 .gradle
 build
 application.properties
+application-secret.properties
+
