@@ -81,5 +81,25 @@ public class UserController {
 			return ResponseEntity.badRequest().body(responseDTO);
 		}
 	}
-	
+
+	@PostMapping("/delete")
+	public ResponseEntity<?> deleteUser(@RequestBody UserDTO userDTO) {
+		try {
+			// 사용자 인증 정보로 사용자 조회
+			UserEntity user = userService.getByCredentials(
+					userDTO.getUsername(), userDTO.getPassword(), passwordEncoder
+			);
+
+			if (user != null) {
+				userService.delete(user);  // 사용자 삭제
+				return ResponseEntity.ok().body("회원 탈퇴가 완료되었습니다.");
+			} else {
+				return ResponseEntity.badRequest().body("회원 정보를 확인할 수 없습니다.");
+			}
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("회원 탈퇴 중 오류 발생: " + e.getMessage());
+		}
+	}
+
+
 }

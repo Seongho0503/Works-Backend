@@ -40,5 +40,14 @@ public class UserService {
 		
 		return null;
 	}
-	
+
+	public void delete(UserEntity user) {
+		if (user == null || user.getId() == null) {
+			throw new IllegalArgumentException("삭제할 유저 정보가 올바르지 않습니다.");
+		}
+		userRepository.delete(user);
+	}
+
+
+
 }
