@@ -71,6 +71,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             	
             	log.info("loadUser GitHub email = " + email);
         	}
+        }else if("github".equals(registrationId)) {
+            socialType = "slack";
         }
         else {
         	socialType = "google";

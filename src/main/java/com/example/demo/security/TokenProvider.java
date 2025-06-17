@@ -6,9 +6,6 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Value;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -20,22 +17,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
-/*
-	JWT 토큰을 생성하고 검증하는 역할을 수행하는 클래스
-*/
-
 @Service
 public class TokenProvider {
 
-	@Value("${jwt.secret}")
-	private String SECRET_KEY;
+	private static final String SECRET_KEY = "FlRpX30pMqDbiAkmlfArbrmVkDD4RqISskGZmBFax5oGVxzXXWUzTR5JyskiHMIV9M1Oicegkpi46AdvrcX1E6CmTUBc6IFbTPiD";
 
-	private Key SIGNING_KEY;
-
-	@PostConstruct
-	public void init() {
-		this.SIGNING_KEY = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
-	}
+	private static final Key SIGNING_KEY = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
 	
 	public String create(UserEntity userEntity) {
 		Date expiryDate = Date.from(Instant.now().plus(1, ChronoUnit.DAYS));

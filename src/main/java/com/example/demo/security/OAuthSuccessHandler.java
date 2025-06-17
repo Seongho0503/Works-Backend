@@ -22,6 +22,7 @@ import java.util.Optional;
 public class OAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
 	private static final String LOCAL_REDIRECT_URL = "http://localhost:3000";
+	//private static final String LOCAL_REDIRECT_URL = "https://d556-2406-5900-104d-98af-b836-e217-67e3-f668.ngrok-free.app"; slack 로그인 테스트 주소
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

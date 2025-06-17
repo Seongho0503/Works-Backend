@@ -67,6 +67,7 @@ public class WebSecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of("https://d556-2406-5900-104d-98af-b836-e217-67e3-f668.ngrok-free.app:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("*"));
